@@ -14,6 +14,7 @@ import net.iriscan.sdk.BiometricSdkFactory
 import net.iriscan.sdk.face.FaceEncodeProperties
 import net.iriscan.sdk.face.FaceExtractProperties
 import net.iriscan.sdk.face.FaceMatchProperties
+import net.iriscan.sdk.face.FaceNetModelConfiguration
 import java.util.concurrent.Executors
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -27,11 +28,37 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val statusView = findViewById<TextView>(R.id.statusText)
+        statusView.text = "Initializing SDK..."
+        /* DEFAULT CONFIG*/
         BiometricSdkFactory.configure(
             BiometricSdkConfigBuilder(this)
-                .withFace(FaceExtractProperties(), FaceEncodeProperties(), FaceMatchProperties())
+                .withFace(
+                    FaceExtractProperties(),
+                    FaceEncodeProperties(),
+                    FaceMatchProperties()
+                )
                 .build()
         )
+        /* CUSTOM MODEL
+        BiometricSdkFactory.configure(
+            BiometricSdkConfigBuilder(this)
+                .withFace(
+                    FaceExtractProperties(),
+                    FaceEncodeProperties(
+                        FaceNetModelConfiguration(
+                            "https://raw.githubusercontent.com/mosip/mosip-mobileid-sdk/InjiFaceSdk/android/src/main/assets/facenet.tflite",
+                            160,
+                            160,
+                            512
+                        )
+                    ),
+                    FaceMatchProperties(
+                        10.0
+                    )
+                )
+                .build()
+        )*/
         loadDb()
     }
 
