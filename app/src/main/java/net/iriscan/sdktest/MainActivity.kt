@@ -21,7 +21,7 @@ import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
 
-    val executor = Executors.newFixedThreadPool(4)
+    val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
     val db = mutableMapOf<String, List<ByteArray>>()
     var image: Bitmap? = null
 
@@ -35,8 +35,15 @@ class MainActivity : AppCompatActivity() {
             BiometricSdkConfigBuilder(this)
                 .withFace(
                     FaceExtractProperties(),
-                    FaceEncodeProperties(),
-                    FaceMatchProperties()
+                    FaceEncodeProperties(
+                        faceNetModel =  FaceNetModelConfiguration(
+                            "assets://facenet.tflite",
+                            160,
+                            160,
+                            128
+                        )
+                    ),
+                    FaceMatchProperties(threshold = 10.0)
                 )
                 .build()
         )
