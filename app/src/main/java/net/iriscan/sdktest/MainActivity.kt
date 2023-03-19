@@ -36,8 +36,9 @@ class MainActivity : AppCompatActivity() {
                 .withFace(
                     FaceExtractProperties(),
                     FaceEncodeProperties(
-                        faceNetModel =  FaceNetModelConfiguration(
+                        faceNetModel = FaceNetModelConfiguration(
                             "assets://facenet.tflite",
+                            -1, // -1 for skip model checksum verification
                             160,
                             160,
                             128
@@ -54,10 +55,11 @@ class MainActivity : AppCompatActivity() {
                     FaceExtractProperties(),
                     FaceEncodeProperties(
                         FaceNetModelConfiguration(
-                            "https://raw.githubusercontent.com/mosip/mosip-mobileid-sdk/InjiFaceSdk/android/src/main/assets/facenet.tflite",
+                            "https://github.com/biometric-technologies/biometric-sdk-android-example/blob/master/app/src/main/assets/facenet.tflite?raw=true",
+                            1638330780,
                             160,
                             160,
-                            512
+                            128
                         )
                     ),
                     FaceMatchProperties(
