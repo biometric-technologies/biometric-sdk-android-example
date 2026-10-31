@@ -24,14 +24,14 @@ You need Android Studio with an Android SDK that includes API level 32, and a de
 
 The project uses Android Gradle Plugin 7.3.0 and Kotlin 1.7.20.
 
-Note that this example pins SDK version 0.2.2, whose initialization call is `BiometricSdkFactory.configure(...)`. Newer SDK releases (0.6.0 at the time of writing) use `BiometricSdkFactory.initialize(...)` and a slightly different configuration builder; see [docs.iriscan.net/sdk](https://docs.iriscan.net/sdk) for the current API.
+Note that this example pins SDK version 0.2.2, whose initialization call is `BiometricSdkFactory.configure(...)`. Newer SDK releases (0.6.0 at the time of writing) use `BiometricSdkFactory.initialize(...)` and a slightly different configuration builder; see [docs.iriscan.com/sdk](https://docs.iriscan.com/sdk) for the current API.
 
 ## Related repositories
 
 - [biometric-sdk](https://github.com/biometric-technologies/biometric-sdk): the SDK itself (Android, iOS, JVM).
 - [biometric-sdk-ios-example](https://github.com/biometric-technologies/biometric-sdk-ios-example): the same demo in SwiftUI.
 - [biometric-sdk-react-native](https://github.com/biometric-technologies/biometric-sdk-react-native): React Native wrapper with face comparison and liveness.
-- [docs](https://github.com/biometric-technologies/docs): source of the developer documentation at docs.iriscan.net.
+- [docs](https://github.com/biometric-technologies/docs): source of the developer documentation at docs.iriscan.com.
 
 ## License
 
